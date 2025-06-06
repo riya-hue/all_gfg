@@ -1,0 +1,29 @@
+class Solution {
+    static ArrayList<Integer> leaders(int arr[]) {
+        ArrayList<Integer> leadersList = new ArrayList<>();
+        int n = arr.length;
+        if (n == 0) {
+            return leadersList;
+        }
+
+        int maxSoFar = arr[n - 1];//storing the last element as it already the leader
+        leadersList.add(maxSoFar);
+
+        for (int i = n - 2; i >= 0; i--) {
+            if (arr[i] >= maxSoFar) {
+                maxSoFar = arr[i];
+                leadersList.add(maxSoFar);
+            }
+        }
+
+        // Reverse the list to maintain the original order
+        int size = leadersList.size();
+        for (int i = 0; i < size / 2; i++) {   //size/2 is the leader
+            int temp = leadersList.get(i);
+            leadersList.set(i, leadersList.get(size - 1 - i));
+            leadersList.set(size - 1 - i, temp);
+        }
+
+        return leadersList;
+    }
+}
