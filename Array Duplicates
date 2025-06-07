@@ -1,0 +1,28 @@
+class Solution {
+    public List<Integer> findDuplicates(int[] arr) {
+        List<Integer> duplicates = new java.util.ArrayList<>();
+        if (arr.length == 0) {
+            return duplicates;
+        }
+        
+        int max = arr[0];
+        for (int num : arr) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        
+        int[] freq = new int[max + 1];
+        for (int num : arr) {
+            freq[num]++;
+        }
+        
+        for (int i = 0; i < freq.length; i++) {
+            if (freq[i] > 1) {
+                duplicates.add(i);
+            }
+        }
+        
+        return duplicates;
+    }
+}
