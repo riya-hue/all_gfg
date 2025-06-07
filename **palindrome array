@@ -1,0 +1,23 @@
+class Solution {
+    public static boolean isPalinArray(int[] arr) {
+        for (int num : arr) {
+            if (!isPalindrome(num)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    private static boolean isPalindrome(int num) {
+        if (num < 0) {
+            return false;
+        }
+        int original = num;
+        int reversed = 0;
+        while (num != 0) {
+            reversed = reversed * 10 + num % 10;
+            num /= 10;
+        }
+        return original == reversed;
+    }
+}
