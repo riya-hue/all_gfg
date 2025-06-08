@@ -1,0 +1,21 @@
+
+class Solution {
+    public int maxStep(int arr[]) {
+        if (arr.length <= 1) {
+            return 0;
+        }
+        int max_steps = 0;
+        int current_steps = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i + 1] > arr[i]) {
+                current_steps++;
+                if (current_steps > max_steps) {
+                    max_steps = current_steps;
+                }
+            } else {
+                current_steps = 0;
+            }
+        }
+        return max_steps;
+    }
+}
