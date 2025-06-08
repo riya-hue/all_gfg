@@ -1,0 +1,29 @@
+class Solution {
+    public void segregateElements(int[] arr) {
+        // Your code goes here
+        int n=arr.length;
+        int countp=0;
+        
+        for(int i=0;i<n;i++){
+            if(arr[i]>=0)
+            countp++;
+        }
+        int[] temp=new int[n];
+        int posIndex=0;
+        int negIndex=countp;
+        
+        //place positive elements first
+        for(int i=0;i<n;i++){
+              if (arr[i] >= 0) {
+                temp[posIndex++] = arr[i];
+            } else {
+                temp[negIndex++] = arr[i];
+            }
+        }
+        //copy original array
+        for(int i=0;i<n;i++){
+            arr[i]=temp[i];
+        }
+        
+    }
+}
