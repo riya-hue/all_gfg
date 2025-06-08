@@ -1,0 +1,36 @@
+class Solution {
+    void rearrange(ArrayList<Integer> arr) {
+        ArrayList<Integer> positives = new ArrayList<>();
+        ArrayList<Integer> negatives = new ArrayList<>();
+        
+        // Separate positive (including zero) and negative numbers
+        for (int num : arr) {
+            if (num >= 0) {
+                positives.add(num);
+            } else {
+                negatives.add(num);
+            }
+        }
+        
+        int i = 0, j = 0, k = 0;
+        
+        // Clear the original array to reuse it for the result
+        arr.clear();
+        
+        // Merge the two lists alternately starting with positive
+        while (i < positives.size() && j < negatives.size()) {
+            arr.add(positives.get(i++));
+            arr.add(negatives.get(j++));
+        }
+        
+        // Add remaining positive numbers if any
+        while (i < positives.size()) {
+            arr.add(positives.get(i++));
+        }
+        
+        // Add remaining negative numbers if any
+        while (j < negatives.size()) {
+            arr.add(negatives.get(j++));
+        }
+    }
+}
