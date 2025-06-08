@@ -1,0 +1,25 @@
+// User function Template for Java
+
+class Solution {
+    ArrayList<Integer> findMissing(int[] a, int[] b) {
+        
+        
+        ArrayList<Integer> result = new ArrayList<>();
+        
+      for(int numA:a){
+          boolean found=false;
+          for(int numB:b){
+          if(numA==numB)
+           {
+               found=true;
+               break;
+           }
+      }
+      if(!found){
+          result.add(numA);
+         }
+      }
+      return result;
+           
+      }
+    }
