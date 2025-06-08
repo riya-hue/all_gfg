@@ -1,0 +1,26 @@
+class Solution {
+    public static void zigZag(int[] arr) {
+        boolean flag = true; // indicates the expected relation is <
+        
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (flag) {
+                // Expected: arr[i] < arr[i+1]
+                if (arr[i] > arr[i+1]) {
+                    swap(arr, i, i+1);
+                }
+            } else {
+                // Expected: arr[i] > arr[i+1]
+                if (arr[i] < arr[i+1]) {
+                    swap(arr, i, i+1);
+                }
+            }
+            flag = !flag; // toggle the flag for next step
+        }
+    }
+    
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
