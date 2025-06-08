@@ -1,0 +1,9 @@
+class Solution {
+    int convertfive(int num) {
+        // Your code here
+        String numStr = Integer.toString(num);
+        numStr = numStr.replace('0', '5');
+        return Integer.parseInt(numStr);
+    }
+}
+     
