@@ -1,0 +1,26 @@
+// User function Template for Java
+
+class Solution {
+    void segregate0and1(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+        
+        while (left < right) {
+            // Move left pointer until a 1 is found
+            while (left < right && arr[left] == 0) {
+                left++;
+            }
+            // Move right pointer until a 0 is found
+            while (left < right && arr[right] == 1) {
+                right--;
+            }
+            // Swap the elements if left is still less than right
+            if (left < right) {
+                arr[left] = 0;
+                arr[right] = 1;
+                left++;
+                right--;
+            }
+        }
+    }
+}
