@@ -1,0 +1,17 @@
+
+class Solution {
+    public int num(int k, int arr[]) {
+        int count = 0;
+        for (int num : arr) {
+            int currentNum = num;
+            while (currentNum != 0) {
+                int digit = currentNum % 10;
+                if (digit == k) {
+                    count++;
+                }
+                currentNum /= 10;
+            }
+        }
+        return count;
+    }
+}
