@@ -1,0 +1,29 @@
+class Solution {
+    public static int findClosest(int[] arr, int k) {
+        int left = 0;
+        int right = arr.length - 1;
+        int closest = arr[0]; // Initialize with the first element
+        
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            
+            // Update closest if current mid is closer to k
+            if (Math.abs(arr[mid] - k) < Math.abs(closest - k)) {
+                closest = arr[mid];
+            } else if (Math.abs(arr[mid] - k) == Math.abs(closest - k)) {
+                // If the difference is same, choose the larger number
+                if (arr[mid] > closest) {
+                    closest = arr[mid];
+                }
+            }
+            
+            if (arr[mid] < k) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        
+        return closest;
+    }
+}
