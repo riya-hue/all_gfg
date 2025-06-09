@@ -1,0 +1,17 @@
+class Solution {
+    public int countBuildings(int[] height) {
+        if (height.length == 0) return 0;
+        
+        int count = 1; // First building can always see the sunrise
+        int max_so_far = height[0];
+        
+        for (int i = 1; i < height.length; i++) {
+            if (height[i] > max_so_far) {
+                count++;
+                max_so_far = height[i];
+            }
+        }
+        
+        return count;
+    }
+}
