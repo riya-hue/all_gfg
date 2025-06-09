@@ -1,0 +1,21 @@
+class Solution {
+    public ArrayList<Integer> uniqueId(int[] arr) {
+        int seen = 0;
+        int[] temp = new int[10]; // Since IDs are single-digit (0-9), max unique elements is 10
+        int count = 0;
+        
+        for (int num : arr) {
+            int mask = 1 << num;
+            if ((seen & mask) == 0) {
+                seen |= mask;
+                temp[count++] = num;
+            }
+        }
+        
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            result.add(temp[i]);
+        }
+        return result;
+    }
+}
