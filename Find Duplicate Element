@@ -1,0 +1,19 @@
+class Solution {
+    public int findDuplicate(int arr[]) {
+        // The array is sorted and has 10 elements with one number repeated five times.
+        // The duplicate must be either at index 4 or index 5 (0-based) if it's in the middle.
+        // First comparison: check if arr[4] == arr[5]
+
+        if (arr[4] == arr[5]) {
+            return arr[4];
+        }
+        // If not, the duplicate is either the first five elements or the last five elements.
+        // Second comparison: check if arr[0] == arr[4]
+
+        if (arr[0] == arr[4]) {
+            return arr[0];
+        } else {
+            return arr[5];
+        }
+    }
+}
