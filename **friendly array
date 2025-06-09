@@ -1,0 +1,16 @@
+class Solution {
+    public int calculateFriendliness(int[] arr) {
+        int sum = 0;
+        int n = arr.length;
+        if (n == 0) {
+            return 0;
+        }
+        for (int i = 0; i < n; i++) {
+            int prev = arr[(i - 1 + n) % n];
+            int next = arr[(i + 1) % n];
+            sum += Math.abs(arr[i] - prev) + Math.abs(arr[i] - next);
+        }
+        // Since each pair is counted twice, we divide by 2
+        return sum / 2;
+    }
+}
