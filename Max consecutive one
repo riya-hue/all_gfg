@@ -1,0 +1,31 @@
+class Solution {
+    public int maxConsecutiveCount(int[] arr) {
+        int max1 = 0;
+        int max0 = 0;
+        int count1 = 0;
+        int count0 = 0;
+        
+        for (int num : arr) {
+            if (num == 1) {
+                count1++;
+                count0 = 0; // Reset count0 when a 1 is encountered
+                if (count1 > max1) {
+                    max1 = count1;
+                }
+            } else {
+                count0++;
+                count1 = 0; // Reset count1 when a 0 is encountered
+                if (count0 > max0) {
+                    max0 = count0;
+                }
+            }
+        }
+        
+        return Math.max(max1, max0);
+    }
+}
+
+        return Math.max(max1,max0);
+        }
+    }
+
