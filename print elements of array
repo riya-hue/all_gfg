@@ -1,0 +1,14 @@
+// User function Template for Java
+
+class Solution {
+    // Just print the space seperated array elements
+    void printArray(int arr[]) {
+        //   code here
+         for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == 1) {
+                return i; // Return the index of the last '1'
+            }
+        }
+        return -1; // If no '1' is found, return -1
+    }
+    }
