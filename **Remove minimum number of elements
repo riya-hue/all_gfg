@@ -1,0 +1,28 @@
+class Solution {
+    public int minRemove(int[] arr1, int[] arr2) {
+        int maxElement = 100000; // Based on the constraint 1 ≤ arr1[i], arr2[i] ≤ 10^5
+        int[] freq1 = new int[maxElement + 1];
+        int[] freq2 = new int[maxElement + 1];
+        
+        // Count frequencies for arr1
+        for (int num : arr1) {
+            freq1[num]++;
+        }
+        
+        // Count frequencies for arr2
+        for (int num : arr2) {
+            freq2[num]++;
+        }
+        
+        int minRemovals = 0;
+        
+        // Iterate through all possible elements
+        for (int num = 1; num <= maxElement; num++) {
+            if (freq1[num] > 0 && freq2[num] > 0) {
+                minRemovals += Math.min(freq1[num], freq2[num]);
+            }
+        }
+        
+        return minRemovals;
+    }
+}
