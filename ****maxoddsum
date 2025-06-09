@@ -1,0 +1,36 @@
+class Solution {
+    public int findMaxOddSum(int[] arr) {
+        int totalSum = 0;
+        int smallestPositiveOdd = Integer.MAX_VALUE;
+        int largestNegativeOdd = Integer.MIN_VALUE;
+        
+        for (int num : arr) {
+            if (num > 0) {
+                totalSum += num;
+                if (num % 2 != 0 && num < smallestPositiveOdd) {
+                    smallestPositiveOdd = num;
+                }
+            } else if (num % 2 != 0) {
+                if (num > largestNegativeOdd) {
+                    largestNegativeOdd = num;
+                }
+            }
+        }
+        
+        if (totalSum % 2 != 0) {
+            return totalSum;
+        } else {
+            int maxOddSum = -1;
+            if (smallestPositiveOdd != Integer.MAX_VALUE) {
+                maxOddSum = totalSum - smallestPositiveOdd;
+            }
+            if (largestNegativeOdd != Integer.MIN_VALUE) {
+                int tempSum = totalSum + largestNegativeOdd;
+                if (tempSum > maxOddSum) {
+                    maxOddSum = tempSum;
+                }
+            }
+            return maxOddSum;
+        }
+    }
+}
