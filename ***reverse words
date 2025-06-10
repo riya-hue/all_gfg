@@ -1,0 +1,38 @@
+public class Solution {
+    public String reverseWords(String s) {
+        // Trim leading and trailing spaces
+        String trimmed = s.trim();
+        // Split into words, handling multiple spaces
+        String[] words = trimmed.split("\\s+");
+        // Reverse the array of words
+        reverseArray(words);
+        // Join the words with a single space
+        return joinWords(words);
+    }
+
+    private void reverseArray(String[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+        while (left < right) {
+            String temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+    }
+
+    private String joinWords(String[] words) {
+        if (words.length == 0) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < words.length; i++) {
+            sb.append(words[i]);
+            if (i < words.length - 1) {
+                sb.append(" ");
+            }
+        }
+        return sb.toString();
+    }
+}
