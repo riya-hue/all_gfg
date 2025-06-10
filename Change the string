@@ -1,0 +1,14 @@
+class Solution {
+    String modify(String s) {
+        if (s.isEmpty()) {
+            return s;
+        }
+        
+        char firstChar = s.charAt(0);
+        if (Character.isUpperCase(firstChar)) {
+            return s.toUpperCase();
+        } else {
+            return s.toLowerCase();
+        }
+    }
+}
