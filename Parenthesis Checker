@@ -1,0 +1,28 @@
+class Solution {
+    static boolean isBalanced(String s) {
+        char[] stack = new char[s.length()];
+        int top = -1; // stack is initially empty
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if (c == '(' || c == '{' || c == '[') {
+                // Push onto stack
+                stack[++top] = c;
+            } else {
+                if (top == -1) {
+                    // Stack is empty, no matching opening bracket
+                    return false;
+                }
+                char open = stack[top--]; // Pop from stack
+                if (!((c == ')' && open == '(') || 
+                      (c == '}' && open == '{') || 
+                      (c == ']' && open == '['))) {
+                    return false;
+                }
+            }
+        }
+        // Stack should be empty if all brackets are matched
+        return top == -1;
+    }
+}
