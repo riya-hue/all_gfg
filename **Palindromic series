@@ -1,0 +1,40 @@
+class Solution {
+    public static boolean pallan(int n) {
+        // Step 1: Extract each digit of n and compute the sum
+        int sum = 0;
+        int temp = n;
+        int numDigits = 0;
+        while (temp > 0) {
+            sum += temp % 10;
+            temp /= 10;
+            numDigits++;
+        }
+        
+        // Step 2: Create the base string
+        char[] base = new char[numDigits];
+        temp = n;
+        for (int i = numDigits - 1; i >= 0; i--) {
+            int digit = temp % 10;
+            base[i] = (char)('a' + digit);
+            temp /= 10;
+        }
+        
+        // Step 3: Build the full string of length sum
+        char[] fullStr = new char[sum];
+        for (int i = 0; i < sum; i++) {
+            fullStr[i] = base[i % numDigits];
+        }
+        
+        // Step 4: Check if the result is a palindrome
+        int left = 0;
+        int right = sum - 1;
+        while (left < right) {
+            if (fullStr[left] != fullStr[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+}
