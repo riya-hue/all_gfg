@@ -1,0 +1,18 @@
+class Solution {
+    public static int[] colSum(int mat[][]) {
+        if (mat == null || mat.length == 0 || mat[0].length == 0) {
+            return new int[0];
+        }
+        int rows = mat.length;
+        int cols = mat[0].length;
+        int[] result = new int[cols];
+        for (int j = 0; j < cols; j++) {
+            int sum = 0;
+            for (int i = 0; i < rows; i++) {
+                sum += mat[i][j];
+            }
+            result[j] = sum;
+        }
+        return result;
+    }
+}
